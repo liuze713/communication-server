@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!--配置控制台输出的格式-->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+    <!--控制输出到文件的日志info-->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>  <!--//打印error-->
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>./logsError/error.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>  <!--//打印error-->
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>./logsInfo/info.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <!--<appender name="fileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+    <!--<level>ERROR</level>-->
+    <!--<encoder>-->
+    <!--<pattern>-->
+    <!--%msg%n-->
+    <!--</pattern>-->
+    <!--</encoder>-->
+    <!--&lt;!&ndash;滚动策略&ndash;&gt;-->
+    <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--&lt;!&ndash;路径&ndash;&gt;-->
+    <!--<fileNamePattern>./logs/%d.log</fileNamePattern>-->
+    <!--</rollingPolicy>-->
+    <!--</appender>-->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder"
+            level="DEBUG"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"
+            level="DEBUG"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>
+    <root level="INFO">
+        <appender-ref ref="fileErrorLog"/>
+        <appender-ref ref="consoleLog"/>
+    </root>
+</configuration>
