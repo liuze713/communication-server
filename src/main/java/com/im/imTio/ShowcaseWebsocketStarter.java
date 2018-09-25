@@ -58,6 +58,12 @@ public class ShowcaseWebsocketStarter {
         return wsServerStarter;
     }
 
+    /**
+     * @return void
+     * @description TODO 启动
+     * @author 刘泽
+     * @date 2018-9-25 11:52
+     */
     public static void main(String[] args) throws Exception {
         start();
     }
