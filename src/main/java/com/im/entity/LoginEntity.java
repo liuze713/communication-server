@@ -25,7 +25,7 @@ public class LoginEntity {
     @Column(name = "groupname")
     private String groupname;
     @Column(name = "msgtype")
-    Integer msgtype;
+    private Integer msgtype;
 
     public String getId() {
         return id;
